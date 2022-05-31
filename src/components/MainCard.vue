@@ -1,4 +1,9 @@
 <template>
+<div v-if="displaycontact" class="contact-me-container">
+    <div class="contact-me-inner">
+        <ContactMe/>
+    </div>
+</div>
 <div class="body-container">
 <div class="wave-container">
     <div class="wave"></div>
@@ -11,23 +16,38 @@
                 <p>Blake Preston</p>
             </div>
             <div class="nav-inner-two">
-                <router-link class="router-link" to="/post"><img src="../assets/linkedinFinal.png" alt=""><p>LinkedIn</p></router-link>
-                <router-link class="router-link" to="/post"><img src="../assets/githubFinal.png" alt=""><p>GitHub</p></router-link>
-                <router-link class="router-link" to="/post"><img src="../assets/mailFinal.png" alt=""><p>Contact Me</p></router-link>
+                <div class="router-link"><img src="../assets/linkedinFinal.png" alt=""><p><a href="https://www.linkedin.com/in/blake-preston/" target="_blank">LinkedIn</a></p></div>
+                <div class="router-link" to="/post"><img src="../assets/githubFinal.png" alt=""><p><a href="https://github.com/blakepreston" target="_blank">GitHub</a></p></div>
+                <div @click="displaycontact = !displaycontact" class="router-link"><img src="../assets/mailFinal.png" alt=""><p>Contact Me</p></div>
             </div>
         </div>
     <div class="header-container">
-        <div class="text-container">
-            <h1>
-                Hello, my name is Blake.
-            </h1>
-            <p>I am a software developer</p>
-        </div>
+            <div class="text-container">
+                <h1>
+                    Hello, my name is Blake.
+                </h1>
+                <p>I am a software developer</p>
+                <br>
+                <div class="check-projects">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div class="line4"></div>
+                    <div class="line5"></div>
+                    <div class="line6"></div>
+                    <div class="line7"></div>
+                    <div class="line8"></div>
+                    <div class="line9"></div>
+                    <div class="line10"></div>
+                </div>
+            </div>
+        
         <div class="text-container-two">
             <h1>
                 About Me
             </h1>
             <p>I am a software developer at LREX. I am currently working with .NET and Vue.js.
+                <br>
                 <br>
                 Recently, I have been diving into web development. I am currently studying Vue and Node.js. 
                 I am interested in being able to create full stack applications.
@@ -105,8 +125,32 @@
 </template>
 
 <script>
+import ContactMe from '../components/ContactMe.vue'
 export default {
+    data(){
+        return{
+            displaycontact: false
+        }
+    },
+    components:{
+        ContactMe
+    },
+    mounted(){
+        const textContainer = document.querySelector('.text-container');
+        textContainer.classList.remove('text-animation');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                textContainer.classList.add('text-animation');
+                return; // if we added the class, exit the function
+                }
+                    // We're not intersecting, so remove the class!
+                    textContainer.classList.remove('text-animation');
+                });
+            });
 
+        observer.observe(document.querySelector('.text-container'));
+    }
 }
 </script>
 
@@ -114,7 +158,30 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Roboto:wght@700&family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Monda&family=Roboto:wght@700&family=Work+Sans&display=swap');
 
-h1{
+.contact-me-container{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    margin-top: 10%;
+    animation: animate-contact 1s ease;
+}
+
+@keyframes animate-contact {
+    from{margin-top: -20%;}
+    to{margin-top: 10%;}
+}
+
+.text-animation{
+    animation: text-animate 1s ease;
+}
+
+@keyframes text-animate {
+    from{margin-top: -10%;}
+    to{margin-top: 10%;}
+}
+
+h1, h2{
   font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -124,11 +191,27 @@ p, h3{
 
 .router-link{
     text-decoration: none;
-    color: #243C54;
+    color: #3CE3B4;
     font-family: 'Monda', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
+}
+
+.router-link img{
+    background-color: #3CE3B4;
+    padding: 1px;
+    border-radius: 50px;
+}
+
+.router-link a{
+    text-decoration: none;
+    color: #3CE3B4;
+}
+
+.router-link p{
+    margin-left: 5px;
 }
 
 .body-container{
@@ -147,12 +230,13 @@ p, h3{
 .wave {
   /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E"); */
   /* background: url("data:image/svg, viewBox='0 0 500 150' path d='M0.00,49.98 C175.22,121.88 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z' fill='#AEF78E'"); */
-  background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 150'%3E%3Cpath d='M0.00,49.98 C175.22,121.88 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z' fill='%233CE3B4'/%3E%3C/svg%3E" );
+  background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 150'%3E%3Cpath d='M0.00,49.98 C175.22,121.88 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z' fill='%23243c54'/%3E%3C/svg%3E" );
   position: absolute;
   bottom: 0;
   width: 6400px;
   height: 500px;
   animation: wave 180s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  /* 243C54 */
 }
 
 @keyframes wave {
@@ -171,6 +255,153 @@ p, h3{
         height: 20px;
     }
 
+    .check-projects{
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .line1{
+        width: 2.5px;
+        height: 45%;
+        background-color: #3CE3B4;
+        animation: animateline1 2s infinite;
+    }
+
+    @keyframes animateline1 {
+        0%{height: 45%;}
+        50%{height: 2.5%;}
+        100%{height: 45%;}
+    }
+
+    .line2{
+        width: 2.5px;
+        height: 40%;
+        background-color: #3CE3B4;
+        animation: animateline2 2s infinite;
+        animation-delay: .1s;
+    }
+
+    @keyframes animateline2 {
+        0%{height: 40%;}
+        50%{height: 2.5%;}
+        100%{height: 40%;}
+    }
+
+    .line3{
+        width: 2.5px;
+        height: 35%;
+        background-color: #3CE3B4;
+        animation: animateline3 2s infinite;
+        animation-delay: .2s;
+    }
+
+    @keyframes animateline3 {
+        0%{height: 35%;}
+        50%{height: 2.5%;}
+        100%{height: 35%;}
+    }
+
+    .line4{
+        width: 2.5px;
+        height: 30%;
+        background-color: #3CE3B4;
+        animation: animateline4 2s infinite;
+        animation-delay: .3s;
+    }
+
+    @keyframes animateline4 {
+        0%{height: 30%;}
+        50%{height: 2.5%;}
+        100%{height: 30%;}
+    }
+
+    .line5{
+        width: 2.5px;
+        height: 25%;
+        background-color: #3CE3B4;
+        animation: animateline5 2s infinite;
+        animation-delay: .4s;
+    }
+
+    @keyframes animateline5 {
+        0%{height: 25%;}
+        50%{height: 2.5%;}
+        100%{height: 25%;}
+    }
+
+    .line6{
+        width: 2.5px;
+        height: 20%;
+        background-color: #3CE3B4;
+        animation: animateline6 2s infinite;
+        animation-delay: .5s;
+    }
+
+    @keyframes animateline6 {
+        0%{height: 20%;}
+        50%{height: 2.5%;}
+        100%{height: 20%;}
+    }
+
+    .line7{
+        width: 2.5px;
+        height: 15%;
+        background-color: #3CE3B4;
+        animation: animateline7 2s infinite;
+        animation-delay: .6s;
+    }
+
+    @keyframes animateline7 {
+        0%{height: 15%;}
+        50%{height: 2.5%;}
+        100%{height: 15%;}
+    }
+
+    .line8{
+        width: 2.5px;
+        height: 10%;
+        background-color: #3CE3B4;
+        animation: animateline8 2s infinite;
+        animation-delay: .7s;
+    }
+
+    @keyframes animateline8 {
+        0%{height: 10%;}
+        50%{height: 2.5%;}
+        100%{height: 10%;}
+    }
+
+    .line9{
+        width: 2.5px;
+        height: 5%;
+        background-color: #3CE3B4;
+        animation: animateline9 2s infinite;
+        animation-delay: .8s;
+    }
+
+    @keyframes animateline9 {
+        0%{height: 5%;}
+        50%{height: 2.5%;}
+        100%{height: 5%;}
+    }
+
+    .line10{
+        width: 2.5px;
+        height: 2.5%;
+        background-color: #3CE3B4;
+        animation: animateline10 2s infinite;
+        animation-delay: .9s;
+    }
+
+    @keyframes animateline10 {
+        0%{height: 2.5%;}
+        50%{height: 1%;}
+        100%{height: 2.5%;}
+    }
+
     .main-page-container{
         display: flex;
         flex-direction: column;
@@ -182,7 +413,7 @@ p, h3{
         position: relative;
         z-index: 99;
         display: flex;
-        height: 5%;
+        height: 10%;
         width: 100%;
         justify-content: center;
     }
@@ -195,7 +426,7 @@ p, h3{
     }
 
     .nav-inner p{
-        color: #243C54;
+        color: #3CE3B4;
     }
 
     .nav-inner img{
@@ -224,7 +455,7 @@ p, h3{
     }
 
     .text-container{
-        color: #243C54;
+        color: #3CE3B4;
         width: 40%;
         margin-top: 10%;
     }
@@ -234,20 +465,20 @@ p, h3{
     }
 
     .text-container-two{
-        color: #243C54;
+        color: #3CE3B4;
         width: 30%;
         margin-top: 12.5%;
-        background: linear-gradient(338.83deg,#96b1ad -3.41%,rgba(255,196,255,0) 52.31%),#b6d6d2;
+        background: linear-gradient(338.83deg,#333C45 -3.41%,rgba(255,196,255,0) 52.31%),#485461;
         padding: 20px;
         border-radius: 15px;
         opacity: .92;
-        animation: shadowAnimate 2.5s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite
+        animation: shadowAnimate 2.5s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
     }
 
     @keyframes shadowAnimate {
-        0% {box-shadow: 5px 5px #243C54;}
-        50% {box-shadow: 10px 10px #243C54;}
-        100%{box-shadow: 5px 5px #243C54;}
+        0% {box-shadow: -5px -5px #3CE3B4;}
+        50% {box-shadow: -10px -10px #3CE3B4;}
+        100%{box-shadow: -5px -5px #3CE3B4;}
     }
 
     .main-container{

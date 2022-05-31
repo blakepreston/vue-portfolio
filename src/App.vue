@@ -34,6 +34,7 @@ p, h3{
 
 body{
   margin: 0;
+  background-color: #647C94;
 }
 
 #app {
