@@ -1,6 +1,7 @@
 <template>
 <div v-if="displaycontact" class="contact-me-container">
     <div class="contact-me-inner">
+        <div @click="displaycontact = !displaycontact" class="contact-me-button"><div class="x-button"></div></div>
         <ContactMe/>
     </div>
 </div>
@@ -50,7 +51,9 @@
                 <br>
                 <br>
                 Recently, I have been diving into web development. I am currently studying Vue and Node.js. 
-                I am interested in being able to create full stack applications.
+                I am interested in creating full stack applications. 
+                <br>
+                In my spare time I create software development related content on YouTube.
             </p>
         </div>
     </div>
@@ -165,6 +168,24 @@ export default {
     height: 100%;
     margin-top: 10%;
     animation: animate-contact 1s ease;
+}
+
+.x-button::after{
+    content: ' \002B';
+    font-weight: bold;
+}
+
+.contact-me-button{
+    width: 15px;
+    height: 15px;
+    background-color: #3CE3B4;
+    margin-left: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 @keyframes animate-contact {
@@ -558,6 +579,34 @@ p, h3{
     @media only screen and (max-width: 950px) {
         .main-container{
             width: 95%;
+        }
+        
+        .header-container{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 800px;
+        }
+
+        .text-container{
+            width: 80%;
+        }
+
+        .text-container-two{
+            width: 80%;
+            margin-top: 30%;
+        }
+
+        .nav-inner-two{
+            margin-left: 5%;
+            flex-direction: column;
+            width: 50%;
+        }
+
+        .router-link{
+            width: 100%;
+            justify-content: flex-end;
         }
     }
 </style>

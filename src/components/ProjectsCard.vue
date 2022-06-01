@@ -86,7 +86,7 @@
         </div>
         
       
-      <p>A informational web page that shows the nitrate levels and diseases in each county of Iowa.</p>
+      <p>An informational web page that shows the nitrate levels and diseases in each county of Iowa.</p>
       <div class="links">
           <a href="https://github.com/blakepreston/DiseaseAndNitrates" target="_blank"><img src="../assets/githubFinal.png" alt=""></a>
           <a href="https://nitratesdisease.netlify.app/" target="_blank"><img src="../assets/link.png" alt=""></a>
@@ -297,4 +297,10 @@ p, h3, h2{
         height: 1.5rem;
         margin: 5px;
     }
+
+    @media only screen and (max-width: 950px) {
+    .project-card{
+        width: 90%;
+    }
+}
 </style>

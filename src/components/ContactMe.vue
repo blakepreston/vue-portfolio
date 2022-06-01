@@ -103,4 +103,10 @@ export default {
     background-color: #34cba0;
     transition-duration: .5s;
 }
+
+@media only screen and (max-width: 950px) {
+    .inner-container{
+        width: 90%;
+    }
+}
 </style>
