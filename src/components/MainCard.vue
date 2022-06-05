@@ -54,6 +54,8 @@
                 I am interested in creating full stack applications. 
                 <br>
                 In my spare time I create software development related content on YouTube.
+                <br>
+                Check out my projects below!
             </p>
         </div>
     </div>
@@ -469,7 +471,7 @@ p, h3{
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 500px;
+        height: 600px;
         position: relative;
         z-index: 99;
         text-align: left;
@@ -488,6 +490,7 @@ p, h3{
     .text-container-two{
         color: #3CE3B4;
         width: 30%;
+        height: 60%;
         margin-top: 12.5%;
         background: linear-gradient(338.83deg,#333C45 -3.41%,rgba(255,196,255,0) 52.31%),#485461;
         padding: 20px;
