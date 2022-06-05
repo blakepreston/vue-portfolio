@@ -587,6 +587,7 @@ p, h3{
             align-items: center;
             width: 100%;
             height: 800px;
+            margin-top: 20%;
         }
 
         .text-container{
