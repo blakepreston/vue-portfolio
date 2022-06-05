@@ -49,7 +49,13 @@
             </h1>
             <p>I am a software developer at LREX. I am currently working with .NET and Vue.js.
                 <br>
-                <br>
+            </p>
+                <div class="images-about">
+                    <img style="width: 50px; height: 50px" src="../assets/vueCustom.png" alt="">
+                    <img style="width: 50px; height: 50px" src="../assets/nodeCustom.png" alt="">
+                </div>
+
+            <p>
                 Recently, I have been diving into web development. I am currently studying Vue and Node.js. 
                 I am interested in creating full stack applications. 
                 <br>
@@ -57,6 +63,9 @@
                 <br>
                 Check out my projects below!
             </p>
+            <div class="images-about">
+                <img style="width: 50px; height: 50px" src="../assets/customYoutube.png" alt="">
+            </div>
         </div>
     </div>
     </div>
@@ -471,7 +480,7 @@ p, h3{
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 600px;
+        height: 650px;
         position: relative;
         z-index: 99;
         text-align: left;
@@ -490,7 +499,7 @@ p, h3{
     .text-container-two{
         color: #3CE3B4;
         width: 30%;
-        height: 60%;
+        height: 70%;
         margin-top: 12.5%;
         background: linear-gradient(338.83deg,#333C45 -3.41%,rgba(255,196,255,0) 52.31%),#485461;
         padding: 20px;
@@ -589,7 +598,7 @@ p, h3{
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 800px;
+            height: 850px;
             margin-top: 20%;
         }
 
