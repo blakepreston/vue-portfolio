@@ -21,6 +21,10 @@ export default {
             switch(data.payload.event){
                 case 'signIn':
                     console.log("The user signed in!")
+                    Auth.currentSession()
+                    .then((data) => {
+                        console.log(data)
+                    }).catch(err => console.log(err));
                     this.$router.push('post')
                     break;
             }

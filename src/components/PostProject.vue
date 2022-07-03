@@ -28,10 +28,13 @@
 
       <button type="submit" @click="PostProject()">Post</button>
   </div>
+
+  <amplify-sign-out></amplify-sign-out>
 </template>
 
 <script>
 import axios from 'axios'
+//import {Auth, Hub} from 'aws-amplify';
 export default {
     data(){
         return{
