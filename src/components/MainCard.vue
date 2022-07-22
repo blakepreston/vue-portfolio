@@ -484,6 +484,7 @@ p, h3{
         position: relative;
         z-index: 99;
         text-align: left;
+        margin-bottom: 10%;
     }
 
     .text-container{
